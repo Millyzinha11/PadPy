@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedirPy</title>
+</head>
+
+<body>
+
+    <div id="wrap">
+
+        <header>
+            <h1>RedirPy</h1>
+        </header>
+        <hr>
+        <nav>
+            <a href="/admin">Listar</a> &nbsp;&bull;&nbsp;
+            <a href="/new">Novo</a>
+        </nav>
+        <hr>
+        <main>{% block content %}{% endblock %}</main>
+        <hr>
+        <footer>
+            &copy; 2024 Joca da Silva
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

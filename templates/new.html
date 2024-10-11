@@ -1,0 +1,66 @@
+{% extends '_theme.html' %}
+
+{% block content %}
+
+<h3>Novo Shortlink</h3>
+
+{% if page.sended %}
+
+<div>Shortlink criado!!!</div>
+
+{% endif %}
+
+{% if page.error %}
+
+<div>
+    Oooops!<br>
+    Algo errado não deu certo.<br>
+    Já existe um shortlink com este nome e/ou short...
+</div>
+
+{% endif %}
+
+<p>Preencha os campos abaixo para criar o novo redirecionamento.</p>
+
+<form action="/new" method="post">
+
+    <p>
+        <label for="name">
+            Nome:
+        </label>
+        <input type="text" name="name" id="name" required minlength="4"> <sup title="Obrigatório: um nome canônico para o novo link.">?</sup>
+    </p>
+
+    <p>
+        <label for="link">
+            Link original:
+        </label>
+        <input type="url" name="link" id="link" required> <sup title="Obrigatório: o link original que será redirecionado. Use Ctrl+C e Ctrl+V!">?</sup>
+    </p>
+
+    <p>
+        <label for="short">
+            https://localhost:5000/
+            <input type="text" name="short" id="short" required minlength="2">
+            <sup title="Obrigatório: complemento da URL para redirecionar. Use um nome curto com somente letras e números.">?</sup>
+        </label>
+    </p>
+
+    <p>
+        <label for="expire">Expiração:</label>
+        <input type="datetime-local" name="expire" id="expire" value="{{ page.expire_sugest }}" required>
+        <sup title="Obrigatório: selecione a data de expiração ou aceite a data atual que tem 1 ano de validade.">?</sup>
+    </p>
+
+    <p>
+        <button type="submit">Criar Shortlink</button>
+    </p>
+
+</form>
+
+<script>
+    // Evita o reenvio dos formulários ao atualizar a página
+    if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
+</script>
+
+{% endblock %}

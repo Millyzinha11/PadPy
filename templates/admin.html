@@ -1,0 +1,27 @@
+{% extends '_theme.html' %}
+
+{% block content %}
+
+<h2>Meus Shortlinks</h2>
+
+{% for short in page.shortlinks %}
+
+<h3>
+    {{ short.id }} - {{ short.name }} &rarr; {{ short.short }}<br>
+    <small><a href="{{ page.root_link }}/{{ short.short }}" target="_blank">{{ page.root_link }}/{{ short.short }}</a></small>
+</h3>
+<ul>
+    <li>Link original: <a href="{{ short.link }}" target="_blank">{{ short.link }}</a></li>
+    <li>Criado em {{ short.datebr }}</li>
+    <li>Expira em {{ short.expirebr }}</li>
+    <li>{{ short.views }} acessos</li>
+    <li>
+        Ações:
+        <button title="Editar este shortlink" onclick="location.href='/edit/{{ short.id }}'">&#9998;</button>
+        <button title="Apagar este shortlink" onclick="location.href='/del/{{ short.id }}'">&#128465;</button>
+    </li>
+</ul>
+
+{% endfor %}
+
+{% endblock %}
